@@ -5,6 +5,7 @@ import Question3 from './Question3';
 import Question4 from './Question4'; 
 import Question5 from './Question5'; 
 import Question6 from './Question6'; 
+import Results from './Results'; 
 
 
 
@@ -39,6 +40,12 @@ import Question6 from './Question6';
         this.addTotalRisk(); 
     };
 
+    restart = () => {
+        this.setState({
+            question: 1
+        });
+    }
+
     previousQuestion = () => {
         const {question} = this.state 
         this.setState({
@@ -57,7 +64,7 @@ import Question6 from './Question6';
 
 
     render(){
-        const { question, riskFactor}  = this.state; 
+        const { question}  = this.state; 
 
         switch(question) {
             case 1: 
@@ -108,6 +115,13 @@ import Question6 from './Question6';
                     addRisk={this.addRisk}
                     />
                 )
+                case 7: 
+                return (
+                    < Results
+                    previousQuestion = {this.previousQuestion}
+                    restart = {this.restart}
+                    />
+                )                
 
         }
     }

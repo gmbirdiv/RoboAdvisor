@@ -22,7 +22,7 @@ class Question6 extends Component {
     }
 
     render() {
-        const {  addRisk, nextQuestion, previousQuestion } = this.props; 
+        const {  addRisk, nextQuestion, previousQuestion} = this.props; 
         const {imgSrc} = this.state; 
         const imagePath = require(`../images/${imgSrc}.png`)
 
