@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import Question1 from './Question1'; 
 import Question2 from './Question2'; 
 import Question3 from './Question3'; 
+import Question4 from './Question4'; 
+import Question5 from './Question5'; 
+import Question6 from './Question6'; 
+
+
+
 
 
 
@@ -27,7 +33,6 @@ import Question3 from './Question3';
 
     nextQuestion = () => {
         const {question} = this.state
-        const {riskFactor, totalRiskFactor} = this.state; 
         this.setState({
             question: question + 1
         });
@@ -69,7 +74,6 @@ import Question3 from './Question3';
                     previousQuestion = {this.previousQuestion}
                     nextQuestion={this.nextQuestion}
                     addRisk={this.addRisk}
-                    addTotalRisk={this.addTotalRisk}
                     />
                 )
                 case 3: 
@@ -78,7 +82,30 @@ import Question3 from './Question3';
                     previousQuestion = {this.previousQuestion}
                     nextQuestion={this.nextQuestion}
                     addRisk={this.addRisk}
-                    addTotalRisk={this.addTotalRisk}
+                    />
+                )
+                case 4: 
+                return (
+                    < Question4
+                    previousQuestion = {this.previousQuestion}
+                    nextQuestion={this.nextQuestion}
+                    addRisk={this.addRisk}
+                    />
+                )
+                case 5: 
+                return (
+                    < Question5
+                    previousQuestion = {this.previousQuestion}
+                    nextQuestion={this.nextQuestion}
+                    addRisk={this.addRisk}
+                    />
+                )
+                case 6: 
+                return (
+                    < Question6
+                    previousQuestion = {this.previousQuestion}
+                    nextQuestion={this.nextQuestion}
+                    addRisk={this.addRisk}
                     />
                 )
 
