@@ -1,38 +1,144 @@
-.App {
-  text-align: center;
+.toolBar {
+  background-color: #244883;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heroContainer{
+  display: flex; 
+  margin-top: 100px; 
+  margin: 50px 0px 0px 25px; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.heroText{
+  padding: 370px 20px 50px 5px; 
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heroText h1 {
+  font-size: 50px; 
+  color: #244883;
+  margin-bottom: 12px; 
+}
+
+.heroText h2 {
+  color: #244883;
+
+}
+
+
+.heroImage{
+  width: 850px; 
+  height: 550px; 
+  margin-right: 50px;
+}
+
+.heroImage img{
+  width: 100%; 
+  height: 100%; 
+}
+
+.section1 {
+  height: 400px; 
+  width: 100%; 
+  background-color: #75a1de;
   display: flex;
-  flex-direction: column;
+  margin-bottom: 100px; 
+}
+
+.imageContainer1 {
+  height: 90%; 
+  width: 400px; 
+  display: flex;
+  align-items: stretch;
+  margin-left: 100px; 
+}
+
+.imageContainer1 img{
+  height: 100%; 
+  width: 100%; 
+}
+
+.section1Text {
+  color: white; 
+  width: 50%;
+  height: auto; 
+  margin-left: 50px;
+}
+
+.section1Text p {
+  line-height: 1.5rem;
+
+}
+
+.step2Container {
+  width: 100%; 
+  height: 100px;
+  position: relative;
+}
+
+.step2 {
+  height: auto; 
+  width: 30%; 
+  position: absolute;
+  top: 0; 
+  right: 38%; 
+  text-align: center;
+  color: #244883
+}
+
+
+.section2 {
+  height: auto; 
+  width: auto; 
+  margin-bottom: 5px;
+  position: relative;
+  margin-bottom: 100px; 
+}
+
+.step1 {
+  position: absolute; 
+  top: 0;
+  left: 4%;  
+  width: 15%; 
+  color: #244883
+
+}
+
+.step3 {
+  position: absolute; 
+  top: 0;
+  right: 4%;  
+  width: 15%; 
+  color: #244883
+
+}
+
+.imageContainer2 {
+  height: 100%; 
+  width: auto;
+  display: flex;
   align-items: center;
+  justify-content:center;
+  padding: 15px; 
+}
+
+.imageContainer2 img {
+  height: 100%; 
+  width: 100%;
+}
+
+
+.questionSection {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
+  margin-bottom: 25px; 
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.questionContainer {
+  height: auto;
+  max-height: 700px; 
+  max-width: 70%;
+  min-width: 50%;
+  width: auto; 
+  border: 5px solid #244883;
+  padding: 50px;  
 }

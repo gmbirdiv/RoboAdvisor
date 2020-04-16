@@ -1,0 +1,29 @@
+
+.colorBar {
+    height: 15px; 
+    width: 100%; 
+}
+
+.MuiCardContent-root.riskResult {
+    color: seagreen;
+    background-color: seagreen;
+    padding: 0px; 
+
+}
+
+.MuiCardContent-root.notResult {
+    height: 46px; 
+    padding: 0px; 
+
+}
+
+.cardContainer {
+    display: flex;
+}
+
+h4.recAlert {
+    padding: 0px; 
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+}
+

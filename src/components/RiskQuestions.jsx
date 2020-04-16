@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Start from './Start';
 import Question1 from './Question1'; 
 import Question2 from './Question2'; 
 import Question3 from './Question3'; 
@@ -13,18 +14,20 @@ import Results from './Results';
 
 
 
+
  class RiskQuestions extends Component {
 
     
     state = {
-        question: 1, 
+        question: 0, 
         question1RiskFactor: 0,
         question2RiskFactor: 0,
         question3RiskFactor: 0,
         question4RiskFactor: 0,
         question5RiskFactor: 0,
         question6RiskFactor: 0,
-        totalRiskFactor: 0
+        totalRiskFactor: 0, 
+        riskAssessment: ""
     }
 
     addTotalRisk = () => {
@@ -54,19 +57,40 @@ import Results from './Results';
     }
 
     addRisk = (id) => e => {
-        const {riskFactor} = this.state; 
         this.setState({
             [id]: parseInt(e.target.value)
         })
 
     }
 
-
+    assessRisk = () => {
+        const {totalRiskFactor} = this.state; 
+        if(totalRiskFactor <= 10){
+            this.setState({
+                riskAssessment: "Conservative"
+            }) 
+        } else if(totalRiskFactor <= 16){
+            this.setState({
+                riskAssessment: "Moderate"
+            }) 
+        } else {
+            this.setState({
+                riskAssessment: "Aggressive"
+            }) 
+        }
+    }
 
     render(){
-        const { question}  = this.state; 
+        const { question, riskAssessment, question5RiskFactor}  = this.state; 
+        const values = {question5RiskFactor, riskAssessment}; 
 
         switch(question) {
+            case 0: 
+                return(
+                    <Start
+                        nextQuestion={this.nextQuestion}
+                    />
+                )
             case 1: 
                 return ( 
                     < Question1 
@@ -105,6 +129,7 @@ import Results from './Results';
                     previousQuestion = {this.previousQuestion}
                     nextQuestion={this.nextQuestion}
                     addRisk={this.addRisk}
+                    values = {values}
                     />
                 )
                 case 6: 
@@ -113,6 +138,8 @@ import Results from './Results';
                     previousQuestion = {this.previousQuestion}
                     nextQuestion={this.nextQuestion}
                     addRisk={this.addRisk}
+                    assessRisk={this.assessRisk}
+                    values = {values}
                     />
                 )
                 case 7: 
@@ -120,6 +147,8 @@ import Results from './Results';
                     < Results
                     previousQuestion = {this.previousQuestion}
                     restart = {this.restart}
+                    assessRisk={this.assessRisk}
+                    values = {values}
                     />
                 )                
 

@@ -13,11 +13,18 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CheckIcon from '@material-ui/icons/Check';
+import styled from 'styled-components';
+import { StylesProvider } from '@material-ui/core/styles';
 
+
+
+import './Results.css'
 
 function createData(name, gains) {
     return { name, gains };
   }
+
 const conservativeRows = [
     createData('Average Case', "+6.68%"),
     createData('Best Case', "+38.39%"),
@@ -36,28 +43,50 @@ const aggressiveRows = [
     createData('Worst Case', "-46.31%")
 ]
 
+const CustomCard = styled(Card)`
+    margin: .5em ;
+`;
+
+
 
 class Results extends Component {
 
+    componentDidMount(){
+        const { assessRisk} = this.props; 
+        assessRisk(); 
+    }
+
     render() {
-        const {  restart } = this.props; 
+        const {  restart, values} = this.props; 
         return (
                 <React.Fragment>
-                <Card variant="outlined">
-                    <CardContent>
-                        <Typography>
-                            Conservative 
+                    <StylesProvider injectFirst>
+                <div className="cardContainer"> 
+                <CustomCard variant="outlined">
+                    <CardContent className={values.riskAssessment === "Conservative" ? "riskResult" : "notResult"}>
+                    <div className="colorBar">
+                    </div>
+                    </CardContent >
+                    <CardContent >
+                    <Typography>
+                        {values.riskAssessment === "Conservative" && <h4 className="recAlert"> <CheckIcon/> Recommended Result </h4>}
                         </Typography>
+                        <Typography>
+                            <h1>Conservative </h1>
+                        </Typography>
+                        <br/>
                         <Typography>
                             60% Stock     |     40% Bonds
                         </Typography>
+                        <br/>
                         <Typography>
                             A small amount of Risk with lower  potential return
                         </Typography>
+                        <br/>
                         <Typography>
                             Historical Index Returns
                         </Typography>
-                        <TableContainer component="paper">
+                        <TableContainer component="Paper">
                         <Table>
                             <TableBody>
                                 {conservativeRows.map((row)=> (
@@ -75,22 +104,32 @@ class Results extends Component {
                     <CardActions>
                         <Button size="small">Learn More</Button>
                     </CardActions>
-                </Card>
-                <Card variant="outlined">
+                </CustomCard>
+                <CustomCard variant="outlined">
+                <CardContent className={values.riskAssessment === "Moderate" ? "riskResult" : "notResult"}>
+                    <div className="colorBar">
+                    </div>
+                    </CardContent >
                     <CardContent>
                         <Typography>
-                            Moderate
+                        {values.riskAssessment === "Moderate" && <h4 className="recAlert"> <CheckIcon/> Recommended Result </h4>}
                         </Typography>
+                        <Typography>
+                            <h1>Moderate</h1>
+                        </Typography>
+                        <br/>
                         <Typography>
                             80% Stock     |     20% Bonds
                         </Typography>
+                        <br/>
                         <Typography>
                             A moderate amount of Risk to seek an average potential return
                         </Typography>
+                        <br/>
                         <Typography>
                             Historical Index Returns
                         </Typography>
-                        <TableContainer component="paper">
+                        <TableContainer className="tableContainer" component="paper">
                         <Table>
                             <TableBody>
                                 {moderateRows.map((row)=> (
@@ -108,18 +147,28 @@ class Results extends Component {
                     <CardActions>
                         <Button size="small">Learn More</Button>
                     </CardActions>
-                </Card>
-                <Card variant="outlined">
+                </CustomCard>
+                <CustomCard variant="outlined">
+                    <CardContent className={values.riskAssessment === "Aggressive" ? "riskResult" : "notResult"}>
+                    <div className="colorBar">
+                    </div>
+                    </CardContent >
                     <CardContent>
-                        <Typography>
-                            Aggressive 
+                    <Typography>
+                        {values.riskAssessment === "Aggressive" && <h4 className="recAlert"> <CheckIcon/> Recommended Result </h4>}
                         </Typography>
+                        <Typography>
+                          <h1> Aggressive </h1> 
+                        </Typography>
+                        <br/>
                         <Typography>
                             99% Stock     |     1% Bonds
                         </Typography>
+                        <br/>
                         <Typography>
                             A large amount of Risk to seek an above average potential return
                         </Typography>
+                        <br/>
                         <Typography>
                             Historical Index Returns
                         </Typography>
@@ -141,13 +190,17 @@ class Results extends Component {
                     <CardActions>
                         <Button size="small">Learn More</Button>
                     </CardActions>
-                </Card>
+                </CustomCard>
+                </div>
                 <Button variant="outlined" value='1' color="primary" onClick={restart}>
                     Restart Questionnaire 
                 </Button>
+                </StylesProvider>
                 </React.Fragment>
                     )
     }
 }
 
 export default Results;
+
+

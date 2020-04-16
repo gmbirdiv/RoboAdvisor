@@ -6,14 +6,19 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
 
 
+const NewButton = styled(Button)`
+    margin: 1em ;
+`;
 
 class Question3 extends Component {
     
     render() {
         const {  addRisk, nextQuestion, previousQuestion } = this.props; 
         return (
+            <form>
             <FormControl component="fieldset">
                 <FormLabel component="legend">Which best describes your investing goal?</FormLabel>
                 <RadioGroup  aria-label="gender" name="customized-radios" onChange={addRisk('question3RiskFactor')} >
@@ -22,13 +27,16 @@ class Question3 extends Component {
                     <FormControlLabel value="3" control={<Radio />} label="Seeking greater returns with moderate risk"  />
                     <FormControlLabel value="4" control={<Radio />} label="Maximizing Returns while accepting a large amount of risk in account value" />
                 </RadioGroup>
-                <Button variant="outlined" color="primary" onClick={previousQuestion}>
+                <div className='buttonContainer'>
+                <NewButton variant="outlined" color="primary" onClick={previousQuestion}>
                     Previous
-                </Button>
-                <Button variant="outlined" color="primary" onClick={nextQuestion}>
+                </NewButton>
+                <NewButton variant="outlined" color="primary" onClick={nextQuestion}>
                     Next
-                </Button>
+                </NewButton>
+                </div>
             </FormControl>
+            </form>
                     )
     }
 }
